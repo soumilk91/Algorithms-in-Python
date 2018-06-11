@@ -66,7 +66,7 @@ class check_balance():
 				self.stack.pop()
 		#ret = self.stack.print_the_stack()
 		#print ret
-		if self.stack.is_empty() == True:
+		if self.stack.is_empty():
 			return True
 		else:
 			return False
