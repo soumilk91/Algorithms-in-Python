@@ -7,6 +7,7 @@ Question: Find if the given expression is balanced.
 Solution : Can be implemented using a Stack Data Structure
 """
 import sys 
+import unittest
 
 class Stack():
 	def __init__(self):
@@ -42,9 +43,10 @@ class Stack():
 
 
 class check_balance():
-	def __init__(self):
+	def __init__(self, expression):
 		self.stack = Stack()
-		self.exp = raw_input("Please Enter Your Expression: ")
+		#self.exp = raw_input("Please Enter Your Expression: ")
+		self.exp = expression
 
 	def print_exp(self):
 		print self.exp
@@ -59,14 +61,35 @@ class check_balance():
 			if i in closing_braces:
 				top_element = self.stack.top()
 				if top_element != paring[i]:
-					print "The Expression is not balanced"
-					return
+					#print "The Expression is not balanced"
+					return False
 				self.stack.pop()
-		if self.stack.is_empty:
-			print "The Expression is balanced "
+		#ret = self.stack.print_the_stack()
+		#print ret
+		if self.stack.is_empty() == True:
+			return True
 		else:
-			print "The Expression is not balanced"
-		return
+			return False
 
-inp = check_balance()
-inp.check_balance()	
+#inp = check_balance("{(5+3) * [4-2]")
+#inp.check_balance()
+
+class TestBalancedEquation(unittest.TestCase):
+
+	def test_correct_brackets(self):
+		expression = "{(5+1)*[4-2]}"
+		inp = check_balance(expression)
+		self.assertTrue(inp.check_balance())
+	
+	def test_wrong_brackets_sequence(self):
+		expression = "{(5+3) * [4-2}]"	
+		inp = check_balance(expression)
+		self.assertFalse(inp.check_balance())
+
+	def test_wrong_brackets_numbering(self):
+		expression = "{(5+3) * [4-2]"
+		inp = check_balance(expression)
+                self.assertFalse(inp.check_balance())
+
+if __name__ == '__main__':
+	unittest.main()
