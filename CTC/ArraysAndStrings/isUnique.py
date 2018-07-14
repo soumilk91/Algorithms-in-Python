@@ -1,6 +1,14 @@
 """
 Author: Soumil Ramesh Kulkarni
 Question: Implement an Algorithm to determine if the string has all unique characters. What if you cannot use additional data structure?
+
+Approaches:
+
+1) Use extra Data Structure (Dictionary in our case)
+2) Use Nested For Loops 
+3) Create an array of size 128. Loop over the string and for every character, convert it into ASCII value and set the value in the created list at that particular index. While doing so, if you see the bit is already set, return False
+4) Sort the String array, and check if at any point, if the neighbouring elements are same. 
+  
 """
 import sys 
 import unittest
@@ -20,6 +28,7 @@ class IsUnique():
 				temp_dict[i] = 1
 		return True
 	
+	# Running Time O(n**2), with No Extra Space
 	def compute_using_nested_for_loop(self):
 		for i in range (len(self.string)- 1):
 			temp = self.string[i]
