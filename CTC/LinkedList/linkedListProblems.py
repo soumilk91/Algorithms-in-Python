@@ -221,7 +221,7 @@ class functionsOnLinkedList():
 			else:
 				temp1 = ll_ref_1
 				temp2 = ll_ref_2
-			while (temp1.next_node ! = None):
+			while (temp1.next_node != None):
 				if temp1.next_node == temp2.next_node:
 					return True
 				else:
@@ -245,4 +245,32 @@ class functionsOnLinkedList():
 			temp1 = temp1.next_node
 			temp2 = temp2.next_node
 		return temp1
+
+
+	# Given 2 Singly Linked Lists, which represent a number in the reverse order. Add these numbers and return the sum by creating a Linked List in the reverse Order.
+	def sum_list (self, node_ref1, node_ref2):
+		first_num = 0
+		second_num = 0
+		temp = node_ref1
+		expo = 0
+		while temp != None:
+			first_num = first_num + ((temp.data)*(10**expo))
+			temp = temp.next_node
+			expo += 1
+		expo = 0
+		temp = node_ref2
+		while temp != None:
+			second_num = second_num + ((temp.data)*(10**expo))
+			temp = temp.next_node
+			expo += 1
+		final_sum = first_num + second_num
+		quotient = final_sum
+		ret_ll = Basic_Linked_List_Functions()	
+		#add_node_at_the_start
+		while quotient != 0:
+			remainder = quotient % 10
+			ret_ll.add_node_at_the_end(remainder)
+			quotient = quotient // 10
+		ret_ll.print_singly_linked_list()
+
 
