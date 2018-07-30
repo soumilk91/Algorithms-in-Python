@@ -85,21 +85,25 @@ class BST_Operations():
 		right_sub_tree = self.height_of_the_bst(temp.right)
 		return max(left_sub_tree, right_sub_tree) + 1
 
-	def preorder_traversal (self, ref_node):
+	def preorder_traversal (self, ref_node, arr=[]):
 		temp = ref_node
 		if temp == None:
-			return
-		print temp.data
+			return arr
+		#print temp.data
+		arr.append(temp.data)
 		self.preorder_traversal(temp.left)
 		self.preorder_traversal(temp.right)
+		return arr
 
-	def inorder_traversal (self, ref_node):
+	def inorder_traversal (self, ref_node, arr=[]):
 		temp = ref_node
 		if temp == None:
-			return 
+			return arr 
 		self.inorder_traversal(temp.left)
-		print temp.data
+		#print temp.data
+		arr.append(temp.data)
 		self.inorder_traversal(temp.right)
+		return arr
 
 	def postorder_traversal (self, ref_node):
 		temp =ref_node
@@ -124,27 +128,6 @@ class BST_Operations():
 
 def main():
 	bst1 = BST_Operations()
-	bst1.find_minimum_element(bst1.root)
-	bst1.insert_new_node(15,bst1.root)
-	bst1.insert_new_node(10,bst1.root)
-	bst1.insert_new_node(20,bst1.root)
-	bst1.insert_new_node(8,bst1.root)
-	bst1.insert_new_node(13,bst1.root)
-	bst1.insert_new_node(7,bst1.root)
-	bst1.insert_new_node(11,bst1.root)
-	bst1.insert_new_node(17,bst1.root)
-	bst1.insert_new_node(28,bst1.root)
-	bst1.search_node(15,bst1.root)
-	bst1.search_node(20,bst1.root)
-	bst1.search_node(25,bst1.root)
-	bst1.search_node(10,bst1.root)
-	bst1.find_minimum_element(bst1.root)
-	bst1.find_maximum_element(bst1.root)	
-	#print bst1.height_of_the_bst(bst1.root)
-	bst1.insert_new_node(12,bst1.root)
-	#print bst1.height_of_the_bst(bst1.root)
-	#bst1.inorder_traversal(bst1.root)
-	bst1.level_order_traversal(bst1.root)
 
 if __name__ == '__main__':
 	main()
